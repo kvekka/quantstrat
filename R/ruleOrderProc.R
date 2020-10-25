@@ -181,6 +181,7 @@ ruleOrderProc <- function(portfolio, symbol, mktdata, timestamp=NULL, ordertype=
                         } if(orderPrice >= as.numeric(Lo(mktdataTimestamp)[,1]) && orderPrice <= as.numeric(Hi(mktdataTimestamp)[,1])) {
                           txnprice = as.numeric(getPrice(mktdataTimestamp, 
                                                          prefer = prefer)[, 1]) #check the OHLC validity and fill accordingly
+                        }
                       }
                     ) # end switch on frequency
              },
