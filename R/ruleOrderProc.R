@@ -178,7 +178,9 @@ ruleOrderProc <- function(portfolio, symbol, mktdata, timestamp=NULL, ordertype=
                             txnprice = min(orderPrice, as.numeric(getPrice(mktdataTimestamp,prefer='bid')[,1])) #presumes unique timestamp
                           }
                           #e.g. if pricemethod was opside, it sent a buy order at mktAsk. fill at greater of that ask, and current ask
-                        } else txnprice = as.numeric(getPrice(mktdataTimestamp, prefer=prefer)[,1]) #filled at 'price'
+                        } if(orderPrice >= as.numeric(Lo(mktdataTimestamp)[,1]) && orderPrice <= as.numeric(Hi(mktdataTimestamp)[,1])) {
+                          txnprice = as.numeric(getPrice(mktdataTimestamp, 
+                                                         prefer = prefer)[, 1]) #check the OHLC validity and fill accordingly
                       }
                     ) # end switch on frequency
              },
