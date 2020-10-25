@@ -617,7 +617,7 @@ apply.paramset <- function(strategy.st
                   ,.export=c(env.functions, symbols)
                   , ...
                  )
-    # remove all but the param.combo iterator before calling %dopar%
+    # remove all but the param.combo iterator before calling %dopar% OK but where 
     # this allows us to pass '...' through foreach to the expression
     fe$args <- fe$args[1]
     fe$argnames <- fe$argnames[1]
